@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Progressoes (exemplo de herancas em Java))</title>
+	<link rel="StyleSheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+  
+  <h3>Voltar para a <a href="index.html">lista de codigo</a></h3>
+  <hr>
+  
+  <h1>Progressoes (exemplo de herancas em Java)</title><br>
+
+    <p>Uma classe generica para progressoes, e subclasses que a extendem para progressoes aritmeticas, geometricas e de Fibonacci.
+
+      <h3>Superclasse (Progression.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Uma classe para progressoes</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #888888">// Gera uma progressao. Por omissao e simplesmente: 0, 1, 2, ...</span>
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Progression</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">long</span> current<span style="color: #333333">;</span> <span style="color: #888888">// valor actual</span>
+
+   <span style="color: #888888">// Por omissao comeca em 0. This chama construtor da propria classe</span>
+   Progression<span style="color: #333333">()</span> <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">);</span> <span style="color: #333333">}</span>
+   
+   <span style="color: #888888">// Constroi progressao comencando num dado valor</span>
+   Progression<span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">long</span> start<span style="color: #333333">)</span> <span style="color: #333333">{</span> current <span style="color: #333333">=</span> start<span style="color: #333333">;</span> <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Devolve o valor actual e avanca a sequencia</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">long</span> <span style="color: #0066BB; font-weight: bold">nextValue</span><span style="color: #333333">(</span> <span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #333399; font-weight: bold">long</span> answer <span style="color: #333333">=</span> current<span style="color: #333333">;</span>
+      advance<span style="color: #333333">();</span>
+      <span style="color: #008800; font-weight: bold">return</span> answer<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Avanca para o proximo valor da sequenca</span>
+   <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">advance</span><span style="color: #333333">(</span> <span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      current<span style="color: #333333">++;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Escreve os proximos n valores da progressao</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printProgression</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;</span>n<span style="color: #333333">;</span> i<span style="color: #333333">++)</span>
+         System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span>nextValue<span style="color: #333333">()</span> <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot; &quot;</span><span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+      
+      <hr>
+
+      <h3>Subclasse com implementacao para progressoes aritmeticas (ArithmeticProgression.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Progressoes aritmeticas (subclasse de Progression)</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ArithmeticProgression</span> <span style="color: #008800; font-weight: bold">extends</span> Progression <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">long</span> increment<span style="color: #333333">;</span>
+
+   <span style="color: #888888">// Por omissao cria progressao: 0, 1, 2, ...</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #0066BB; font-weight: bold">ArithmeticProgression</span><span style="color: #333333">()</span> <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">);</span> <span style="color: #333333">}</span>
+   
+   <span style="color: #888888">// Cria progressao: 0, stepsize, 2*stepsize,...</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #0066BB; font-weight: bold">ArithmeticProgression</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">long</span> stepsize<span style="color: #333333">)</span> <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">(</span>stepsize<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">);</span> <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Cria progressao com um dado incremento e um dado inicio</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #0066BB; font-weight: bold">ArithmeticProgression</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">long</span> stepsize<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">long</span> start<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">super</span><span style="color: #333333">(</span>start<span style="color: #333333">);</span>
+      increment <span style="color: #333333">=</span> stepsize<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+   
+   <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">advance</span><span style="color: #333333">(</span> <span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      current <span style="color: #333333">+=</span> increment<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+      
+      <hr>
+
+      <h3>Subclasse com implementacao para progressoes geometricas (GeometricProgression.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Progressoes geometricas (subclasse de Progression)</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">GeometricProgression</span> <span style="color: #008800; font-weight: bold">extends</span> Progression <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">long</span> base<span style="color: #333333">;</span>
+
+   <span style="color: #888888">// Por omissao cria progressao: 1, 2, 4, 8, 16, ...</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #0066BB; font-weight: bold">GeometricProgression</span><span style="color: #333333">()</span> <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">);</span> <span style="color: #333333">}</span>
+   
+   <span style="color: #888888">// Cria progressao: 1, b, b^2, b^3, ...</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #0066BB; font-weight: bold">GeometricProgression</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">long</span> b<span style="color: #333333">)</span> <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">(</span>b<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">);</span> <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Cria progressao com uma dada base e um dado inicio</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #0066BB; font-weight: bold">GeometricProgression</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">long</span> b<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">long</span> start<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">super</span><span style="color: #333333">(</span>start<span style="color: #333333">);</span>
+      base <span style="color: #333333">=</span> b<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+   
+   <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">advance</span><span style="color: #333333">(</span> <span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      current <span style="color: #333333">*=</span> base<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+
+      <hr>
+
+      <h3>Subclasse com implementacao para sequencia de Fibonacci (FibonacciProgression.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Sequencia de Fibonacci (subclasse de Progression)</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">FibonacciProgression</span> <span style="color: #008800; font-weight: bold">extends</span> Progression <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">long</span> prev<span style="color: #333333">;</span>
+
+   <span style="color: #888888">// Por omissao cria fibonacci classico: 0, 1, 1, 2, 3, 5, ...</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #0066BB; font-weight: bold">FibonacciProgression</span><span style="color: #333333">()</span> <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">);</span> <span style="color: #333333">}</span>
+   
+   <span style="color: #888888">// Cria fibonacci com dois valores iniciais dados</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #0066BB; font-weight: bold">FibonacciProgression</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">long</span> first<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">long</span> second<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">super</span><span style="color: #333333">(</span>first<span style="color: #333333">);</span>
+      prev <span style="color: #333333">=</span> second <span style="color: #333333">-</span> first<span style="color: #333333">;</span> <span style="color: #888888">// valor ficticio antes do first</span>
+   <span style="color: #333333">}</span>
+   
+   <span style="color: #008800; font-weight: bold">protected</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">advance</span><span style="color: #333333">(</span> <span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #333399; font-weight: bold">long</span> temp <span style="color: #333333">=</span> prev <span style="color: #333333">+</span> current<span style="color: #333333">;</span>
+      prev <span style="color: #333333">=</span> current<span style="color: #333333">;</span>
+      current <span style="color: #333333">=</span> temp<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+      
+      <hr>
+      
+      <h3>Exemplo de utilizacao (TestProgression.java)</h3>
+
+ <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Exemplo de utilizacao das classes de progressoes</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TestProgression</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[</span> <span style="color: #333333">]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      Progression prog<span style="color: #333333">;</span>
+
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Default Progression: &quot;</span><span style="color: #333333">);</span>
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Progression<span style="color: #333333">();</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">);</span> <span style="color: #888888">// 0 1 2 3 4 5 6 7 8 9</span>
+
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Progression with start 4: &quot;</span><span style="color: #333333">);</span>
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Progression<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">);</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">);</span> <span style="color: #888888">// 4 5 6 7 8 9 10 11 12 13</span>
+      
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Arithmetic progression with default increment: &quot;</span><span style="color: #333333">);</span>
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> ArithmeticProgression<span style="color: #333333">();</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">);</span> <span style="color: #888888">// 0 1 2 3 4 5 6 7 8 9</span>
+      
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Arithmetic progression with increment 5: &quot;</span><span style="color: #333333">);</span>
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> ArithmeticProgression<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">);</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">);</span> <span style="color: #888888">// 0 5 10 15 20 25 30 35 40 45</span>
+      
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Arithmetic progression with start 2: &quot;</span><span style="color: #333333">);</span>
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> ArithmeticProgression<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">);</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">);</span> <span style="color: #888888">// 2 7 12 17 22 27 32 37 42 47</span>
+      
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Geometric progression with default base: &quot;</span><span style="color: #333333">);</span>
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> GeometricProgression<span style="color: #333333">(</span> <span style="color: #333333">);</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">);</span> <span style="color: #888888">// 1 2 4 8 16 32 64 128 256 512</span>
+      
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Geometric progression with base 3: &quot;</span><span style="color: #333333">);</span>      
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> GeometricProgression<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">);</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">);</span> <span style="color: #888888">// 1 3 9 27 81 243 729 2187 6561 19683</span>
+
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Fibonacci progression with default start values: &quot;</span><span style="color: #333333">);</span>
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> FibonacciProgression<span style="color: #333333">(</span> <span style="color: #333333">);</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">);</span> <span style="color: #888888">// 0 1 1 2 3 5 8 13 21 34</span>
+
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Fibonacci progression with start values 4 and 6: &quot;</span><span style="color: #333333">);</span>
+      prog <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> FibonacciProgression<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">6</span><span style="color: #333333">);</span>
+      prog<span style="color: #333333">.</span><span style="color: #0000CC">printProgression</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">);</span> <span style="color: #888888">// 4 6 10 16 26 42 68 110</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+
+      
+      <hr>
+<p class="footer">Baseado em material didático de Pedro Ribeiro (DCC/FCUP)</script></p>
+</body>
+
+</html>

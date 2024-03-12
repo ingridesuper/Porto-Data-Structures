@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Arvores Binarias</title>
+	<link rel="StyleSheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+  
+  <h3>Voltar para a <a href="index.html">lista de codigo</a></h3>
+  <hr>
+  
+  <h1>Arvores Binarias</h1>
+
+  <p>
+
+  <h3>No da arvore (BTNode.java)</h3>
+
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// No de uma arvore binaria &quot;normal&quot;</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public class</span> <span style="color: #BB0066; font-weight: bold">BTNode</span><span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">private</span> T value<span style="color: #333333">;</span>         <span style="color: #888888">// Valor guardado no no</span>
+   <span style="color: #008800; font-weight: bold">private</span> BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> left<span style="color: #333333">;</span>  <span style="color: #888888">// Filho esquerdo</span>
+   <span style="color: #008800; font-weight: bold">private</span> BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> right<span style="color: #333333">;</span> <span style="color: #888888">// Filho direito</span>
+
+   <span style="color: #888888">// Construtor</span>
+   BTNode<span style="color: #333333">(</span>T v<span style="color: #333333">,</span> BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> l<span style="color: #333333">,</span> BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> r<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      value <span style="color: #333333">=</span> v<span style="color: #333333">;</span>
+      left <span style="color: #333333">=</span> l<span style="color: #333333">;</span>
+      right <span style="color: #333333">=</span> r<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Getters e Setters</span>
+   <span style="color: #008800; font-weight: bold">public</span> T <span style="color: #0066BB; font-weight: bold">getValue</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #008800; font-weight: bold">return</span> value<span style="color: #333333">;}</span>
+   <span style="color: #008800; font-weight: bold">public</span> BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #0066BB; font-weight: bold">getLeft</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #008800; font-weight: bold">return</span> left<span style="color: #333333">;}</span>
+   <span style="color: #008800; font-weight: bold">public</span> BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #0066BB; font-weight: bold">getRight</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #008800; font-weight: bold">return</span> right<span style="color: #333333">;}</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setValue</span><span style="color: #333333">(</span>T v<span style="color: #333333">)</span> <span style="color: #333333">{</span>value <span style="color: #333333">=</span> v<span style="color: #333333">;}</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setLeft</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> l<span style="color: #333333">)</span> <span style="color: #333333">{</span>left <span style="color: #333333">=</span> l<span style="color: #333333">;}</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setRight</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> r<span style="color: #333333">)</span> <span style="color: #333333">{</span>right <span style="color: #333333">=</span> r<span style="color: #333333">;}</span>   
+<span style="color: #333333">}</span>
+</pre></div>
+    
+  <hr>
+
+  <h3>Arvore binaria (BTree.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Arvore binaria &quot;normal&quot;</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">BTree</span><span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #333333">{</span>   
+   <span style="color: #008800; font-weight: bold">private</span> BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> root<span style="color: #333333">;</span> <span style="color: #888888">// raiz da arvore</span>
+
+   <span style="color: #888888">// Construtor</span>
+   BTree<span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      root <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Getter e Setter para a raiz</span>
+   <span style="color: #008800; font-weight: bold">public</span> BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #0066BB; font-weight: bold">getRoot</span><span style="color: #333333">()</span> <span style="color: #333333">{</span><span style="color: #008800; font-weight: bold">return</span> root<span style="color: #333333">;}</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setRoot</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> r<span style="color: #333333">)</span> <span style="color: #333333">{</span>root <span style="color: #333333">=</span> r<span style="color: #333333">;}</span>
+
+   <span style="color: #888888">// Verificar se arvore esta vazia</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">boolean</span> <span style="color: #0066BB; font-weight: bold">isEmpty</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">return</span> root <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+
+   <span style="color: #888888">// Numero de nos da arvore   </span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">numberNodes</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">numberNodes</span><span style="color: #333333">(</span>root<span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">numberNodes</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>n <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">+</span> numberNodes<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getLeft</span><span style="color: #333333">())</span> <span style="color: #333333">+</span> numberNodes<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getRight</span><span style="color: #333333">());</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+
+   <span style="color: #888888">// Altura da arvore</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">depth</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">depth</span><span style="color: #333333">(</span>root<span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">depth</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>n <span style="color: #333333">==</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">+</span> Math<span style="color: #333333">.</span><span style="color: #0000CC">max</span><span style="color: #333333">(</span>depth<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getLeft</span><span style="color: #333333">()),</span> depth<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getRight</span><span style="color: #333333">()));</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+   
+   <span style="color: #888888">// O elemento value esta contido na arvore?</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">boolean</span> <span style="color: #0066BB; font-weight: bold">contains</span><span style="color: #333333">(</span>T value<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">contains</span><span style="color: #333333">(</span>root<span style="color: #333333">,</span> value<span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">boolean</span> <span style="color: #0066BB; font-weight: bold">contains</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">,</span> T value<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>n<span style="color: #333333">==</span><span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getValue</span><span style="color: #333333">().</span><span style="color: #0000CC">equals</span><span style="color: #333333">(</span>value<span style="color: #333333">))</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">contains</span><span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getLeft</span><span style="color: #333333">(),</span> value<span style="color: #333333">)</span> <span style="color: #333333">||</span> contains<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getRight</span><span style="color: #333333">(),</span> value<span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+
+   <span style="color: #888888">// Imprimir arvore em PreOrder</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printPreOrder</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;PreOrder:&quot;</span><span style="color: #333333">);</span>
+      printPreOrder<span style="color: #333333">(</span>root<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printPreOrder</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>n<span style="color: #333333">==</span><span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">+</span> n<span style="color: #333333">.</span><span style="color: #0000CC">getValue</span><span style="color: #333333">()</span> <span style="color: #333333">);</span>
+      printPreOrder<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getLeft</span><span style="color: #333333">());</span>
+      printPreOrder<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getRight</span><span style="color: #333333">());</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+   
+   <span style="color: #888888">// Imprimir arvore em InOrder</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printInOrder</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;InOrder:&quot;</span><span style="color: #333333">);</span>
+      printInOrder<span style="color: #333333">(</span>root<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printInOrder</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>n<span style="color: #333333">==</span><span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+      printInOrder<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getLeft</span><span style="color: #333333">());</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">+</span> n<span style="color: #333333">.</span><span style="color: #0000CC">getValue</span><span style="color: #333333">());</span>
+      printInOrder<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getRight</span><span style="color: #333333">());</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+
+   <span style="color: #888888">// Imprimir arvore em PostOrder</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printPostOrder</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;PostOrder:&quot;</span><span style="color: #333333">);</span>
+      printPostOrder<span style="color: #333333">(</span>root<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printPostOrder</span><span style="color: #333333">(</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>n<span style="color: #333333">==</span><span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+      printPostOrder<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getLeft</span><span style="color: #333333">());</span>
+      printPostOrder<span style="color: #333333">(</span>n<span style="color: #333333">.</span><span style="color: #0000CC">getRight</span><span style="color: #333333">());</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">+</span> n<span style="color: #333333">.</span><span style="color: #0000CC">getValue</span><span style="color: #333333">());</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+
+   <span style="color: #888888">// Imprimir arvore numa visita em largura (usando TAD Fila)</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printBFS</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;BFS:&quot;</span><span style="color: #333333">);</span>
+      
+      MyQueue<span style="color: #333333">&lt;</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;&gt;</span> q <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> LinkedListQueue<span style="color: #333333">&lt;</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;&gt;();</span>
+      q<span style="color: #333333">.</span><span style="color: #0000CC">enqueue</span><span style="color: #333333">(</span>root<span style="color: #333333">);</span>
+      <span style="color: #008800; font-weight: bold">while</span> <span style="color: #333333">(!</span>q<span style="color: #333333">.</span><span style="color: #0000CC">isEmpty</span><span style="color: #333333">())</span> <span style="color: #333333">{</span>
+         BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> cur <span style="color: #333333">=</span> q<span style="color: #333333">.</span><span style="color: #0000CC">dequeue</span><span style="color: #333333">();</span>
+         <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>cur <span style="color: #333333">!=</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+            System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">+</span> cur<span style="color: #333333">.</span><span style="color: #0000CC">getValue</span><span style="color: #333333">());</span>
+            q<span style="color: #333333">.</span><span style="color: #0000CC">enqueue</span><span style="color: #333333">(</span>cur<span style="color: #333333">.</span><span style="color: #0000CC">getLeft</span><span style="color: #333333">());</span>
+            q<span style="color: #333333">.</span><span style="color: #0000CC">enqueue</span><span style="color: #333333">(</span>cur<span style="color: #333333">.</span><span style="color: #0000CC">getRight</span><span style="color: #333333">());</span>
+         <span style="color: #333333">}</span>
+      <span style="color: #333333">}</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+   
+   <span style="color: #888888">// Imprimir arvore numa visita em profundidade (usando TAD Pilha)</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">printDFS</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;DFS:&quot;</span><span style="color: #333333">);</span>
+      
+      MyStack<span style="color: #333333">&lt;</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;&gt;</span> q <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> LinkedListStack<span style="color: #333333">&lt;</span>BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;&gt;();</span>
+      q<span style="color: #333333">.</span><span style="color: #0000CC">push</span><span style="color: #333333">(</span>root<span style="color: #333333">);</span>
+      <span style="color: #008800; font-weight: bold">while</span> <span style="color: #333333">(!</span>q<span style="color: #333333">.</span><span style="color: #0000CC">isEmpty</span><span style="color: #333333">())</span> <span style="color: #333333">{</span>
+         BTNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> cur <span style="color: #333333">=</span> q<span style="color: #333333">.</span><span style="color: #0000CC">pop</span><span style="color: #333333">();</span>
+         <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>cur <span style="color: #333333">!=</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>
+            System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">+</span> cur<span style="color: #333333">.</span><span style="color: #0000CC">getValue</span><span style="color: #333333">());</span>
+            q<span style="color: #333333">.</span><span style="color: #0000CC">push</span><span style="color: #333333">(</span>cur<span style="color: #333333">.</span><span style="color: #0000CC">getLeft</span><span style="color: #333333">());</span>
+            q<span style="color: #333333">.</span><span style="color: #0000CC">push</span><span style="color: #333333">(</span>cur<span style="color: #333333">.</span><span style="color: #0000CC">getRight</span><span style="color: #333333">());</span>
+         <span style="color: #333333">}</span>
+      <span style="color: #333333">}</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+
+<span style="color: #333333">}</span>
+</pre></div>
+
+  <hr>
+  
+  <h3>Exemplo de teste das arvores binarias (TestBTree.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Exemplo de utilizacao da uma arvore binaria</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Scanner</span><span style="color: #333333">;</span>
+
+<span style="color: #008800; font-weight: bold">public class</span> <span style="color: #BB0066; font-weight: bold">TestBTree</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #888888">// Ler arvore de inteiros em preorder</span>
+      Scanner in <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Scanner<span style="color: #333333">(</span>System<span style="color: #333333">.</span><span style="color: #0000CC">in</span><span style="color: #333333">);</span>
+      BTree<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;</span> t <span style="color: #333333">=</span> LibBTree<span style="color: #333333">.</span><span style="color: #0000CC">readIntTree</span><span style="color: #333333">(</span>in<span style="color: #333333">);</span>
+
+      <span style="color: #888888">// Escrever resultado de chamada a alguns metodos</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;numberNodes = &quot;</span> <span style="color: #333333">+</span> t<span style="color: #333333">.</span><span style="color: #0000CC">numberNodes</span><span style="color: #333333">());</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;depth = &quot;</span> <span style="color: #333333">+</span> t<span style="color: #333333">.</span><span style="color: #0000CC">depth</span><span style="color: #333333">());</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;contains(2) = &quot;</span> <span style="color: #333333">+</span> t<span style="color: #333333">.</span><span style="color: #0000CC">contains</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">));</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;contains(3) = &quot;</span> <span style="color: #333333">+</span> t<span style="color: #333333">.</span><span style="color: #0000CC">contains</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">));</span>
+
+      <span style="color: #888888">// Escrever nos da arvore seguindo varias ordens possiveis</span>
+      t<span style="color: #333333">.</span><span style="color: #0000CC">printPreOrder</span><span style="color: #333333">();</span>      
+      t<span style="color: #333333">.</span><span style="color: #0000CC">printInOrder</span><span style="color: #333333">();</span>
+      t<span style="color: #333333">.</span><span style="color: #0000CC">printPostOrder</span><span style="color: #333333">();</span>
+      t<span style="color: #333333">.</span><span style="color: #0000CC">printBFS</span><span style="color: #333333">();</span>
+      t<span style="color: #333333">.</span><span style="color: #0000CC">printDFS</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+  
+  <hr>
+    
+  <h3>Classe Utilitaria (LibBTree.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Classe utilitaria com metodo para ler uma arvore em preorder</span>
+<span style="color: #888888">// Ex: 5 1 8 N N 6 N N 7 2 N N N</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Scanner</span><span style="color: #333333">;</span>
+
+<span style="color: #008800; font-weight: bold">public class</span> <span style="color: #BB0066; font-weight: bold">LibBTree</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> BTree<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;</span> <span style="color: #0066BB; font-weight: bold">readIntTree</span><span style="color: #333333">(</span>Scanner in<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      BTree<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;</span> t <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> BTree<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;();</span>
+      t<span style="color: #333333">.</span><span style="color: #0000CC">setRoot</span><span style="color: #333333">(</span>readIntNode<span style="color: #333333">(</span>in<span style="color: #333333">));</span>
+      <span style="color: #008800; font-weight: bold">return</span> t<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+   
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #008800; font-weight: bold">static</span> BTNode<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;</span> <span style="color: #0066BB; font-weight: bold">readIntNode</span><span style="color: #333333">(</span>Scanner in<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      String s <span style="color: #333333">=</span> in<span style="color: #333333">.</span><span style="color: #0000CC">next</span><span style="color: #333333">();</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>s<span style="color: #333333">.</span><span style="color: #0000CC">equals</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;N&quot;</span><span style="color: #333333">))</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">;</span>
+      Integer value <span style="color: #333333">=</span> Integer<span style="color: #333333">.</span><span style="color: #0000CC">parseInt</span><span style="color: #333333">(</span>s<span style="color: #333333">);</span>
+      BTNode<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;</span> left <span style="color: #333333">=</span> readIntNode<span style="color: #333333">(</span>in<span style="color: #333333">);</span>
+      BTNode<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;</span> right <span style="color: #333333">=</span> readIntNode<span style="color: #333333">(</span>in<span style="color: #333333">);</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">new</span> BTNode<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;(</span>value<span style="color: #333333">,</span> left<span style="color: #333333">,</span> right<span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+    
+  <hr>
+<p class="footer">Baseado em material didático de Pedro Ribeiro (DCC/FCUP)</script></p>
+</body>
+
+</html>

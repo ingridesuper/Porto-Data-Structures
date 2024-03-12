@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Lista Duplamente Ligada</title>
+	<link rel="StyleSheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+  
+  <h3>Voltar para a <a href="index.html">lista de codigo</a></h3>
+  <hr>
+  
+  <h1>Lista Duplamente Ligada<br>
+
+    <p>
+
+      <h3>Implementacao (DNode.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Classe com um no generico com dupla ligacao</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">DNode</span><span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">private</span> T value<span style="color: #333333">;</span>       <span style="color: #888888">// Valor guardado no no</span>
+   <span style="color: #008800; font-weight: bold">private</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> prev<span style="color: #333333">;</span> <span style="color: #888888">// Referencia para o no anterior da lista</span>
+   <span style="color: #008800; font-weight: bold">private</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> next<span style="color: #333333">;</span> <span style="color: #888888">// Referencia para o proximo no da lista</span>
+
+   <span style="color: #888888">// Construtor</span>
+   DNode<span style="color: #333333">(</span>T v<span style="color: #333333">,</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> p<span style="color: #333333">,</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      value <span style="color: #333333">=</span> v<span style="color: #333333">;</span>
+      prev <span style="color: #333333">=</span> p<span style="color: #333333">;</span>
+      next <span style="color: #333333">=</span> n<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Getters e Setters</span>
+   <span style="color: #008800; font-weight: bold">public</span> T <span style="color: #0066BB; font-weight: bold">getValue</span><span style="color: #333333">()</span> <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">return</span> value<span style="color: #333333">;</span> <span style="color: #333333">}</span>
+   <span style="color: #008800; font-weight: bold">public</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #0066BB; font-weight: bold">getPrev</span><span style="color: #333333">()</span>  <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">return</span> prev<span style="color: #333333">;</span> <span style="color: #333333">}</span>
+   <span style="color: #008800; font-weight: bold">public</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #0066BB; font-weight: bold">getNext</span><span style="color: #333333">()</span>  <span style="color: #333333">{</span> <span style="color: #008800; font-weight: bold">return</span> next<span style="color: #333333">;</span> <span style="color: #333333">}</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setValue</span><span style="color: #333333">(</span>T v<span style="color: #333333">)</span> <span style="color: #333333">{</span> value<span style="color: #333333">=</span>v<span style="color: #333333">;</span> <span style="color: #333333">}</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setPrev</span><span style="color: #333333">(</span>DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> p<span style="color: #333333">)</span> <span style="color: #333333">{</span> prev <span style="color: #333333">=</span> p<span style="color: #333333">;</span> <span style="color: #333333">}</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setNext</span><span style="color: #333333">(</span>DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span> next <span style="color: #333333">=</span> n<span style="color: #333333">;</span> <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+      
+      <hr>
+
+      <h3>Implementacao (DoublyLinkedList.java)</h3>
+
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Lista duplamente ligada</span>
+<span style="color: #888888">// (implementada com sentinelas - nos &quot;dummy&quot; no inicio e no fim</span>
+<span style="color: #888888">//  que facilitam a implementacao e evitam casos excepcionais)</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">DoublyLinkedList</span><span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">private</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> first<span style="color: #333333">;</span> <span style="color: #888888">// Primeiro no da lista</span>
+   <span style="color: #008800; font-weight: bold">private</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> last<span style="color: #333333">;</span>  <span style="color: #888888">// Ultimo no da lista</span>
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">int</span> size<span style="color: #333333">;</span>       <span style="color: #888888">// Tamanho da lista</span>
+
+   <span style="color: #888888">// Construtor (cria lista vazia com dois nos sentinelas)</span>
+   DoublyLinkedList<span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      first <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;(</span><span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">,</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">,</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">);</span>
+      last  <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;(</span><span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">,</span> first<span style="color: #333333">,</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">);</span> <span style="color: #888888">// Antes do ultimo vem o primeiro</span>
+      first<span style="color: #333333">.</span><span style="color: #0000CC">setNext</span><span style="color: #333333">(</span>last<span style="color: #333333">);</span> <span style="color: #888888">// A seguir ao primeiro vem o ultimo</span>
+      size <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Retorna o tamanho da lista</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">size</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">return</span> size<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Devolve true se a lista estiver vazia ou falso caso contrario</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">boolean</span> <span style="color: #0066BB; font-weight: bold">isEmpty</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #333333">(</span>size <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+   
+   <span style="color: #888888">// Retorna o primeiro valor da lista (ou null se a lista for vazia)</span>
+   <span style="color: #008800; font-weight: bold">public</span> T <span style="color: #0066BB; font-weight: bold">getFirst</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>isEmpty<span style="color: #333333">())</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">return</span> first<span style="color: #333333">.</span><span style="color: #0000CC">getNext</span><span style="color: #333333">().</span><span style="color: #0000CC">getValue</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Retorna o ultimo valor da lista (ou null se a lista for vazia)</span>
+   <span style="color: #008800; font-weight: bold">public</span> T <span style="color: #0066BB; font-weight: bold">getLast</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>isEmpty<span style="color: #333333">())</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">null</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">return</span> last<span style="color: #333333">.</span><span style="color: #0000CC">getPrev</span><span style="color: #333333">().</span><span style="color: #0000CC">getValue</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+   
+   <span style="color: #888888">// Adiciona v ao inicio da lista</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">addFirst</span><span style="color: #333333">(</span>T v<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      addBetween<span style="color: #333333">(</span>v<span style="color: #333333">,</span> first<span style="color: #333333">,</span> first<span style="color: #333333">.</span><span style="color: #0000CC">getNext</span><span style="color: #333333">());</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Adiciona v ao final da lista</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">addLast</span><span style="color: #333333">(</span>T v<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      addBetween<span style="color: #333333">(</span>v<span style="color: #333333">,</span> last<span style="color: #333333">.</span><span style="color: #0000CC">getPrev</span><span style="color: #333333">(),</span> last<span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Adiciona elemento entre dois nos n1 e n2</span>
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">addBetween</span><span style="color: #333333">(</span>T v<span style="color: #333333">,</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n1<span style="color: #333333">,</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n2<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> newNode <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;(</span>v<span style="color: #333333">,</span> n1<span style="color: #333333">,</span> n2<span style="color: #333333">);</span>
+      n1<span style="color: #333333">.</span><span style="color: #0000CC">setNext</span><span style="color: #333333">(</span>newNode<span style="color: #333333">);</span>
+      n2<span style="color: #333333">.</span><span style="color: #0000CC">setPrev</span><span style="color: #333333">(</span>newNode<span style="color: #333333">);</span>
+      size<span style="color: #333333">++;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Remove o primeiro elemento da lista (se for vazia nao faz nada)</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">removeFirst</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>isEmpty<span style="color: #333333">())</span> <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+      remove<span style="color: #333333">(</span>first<span style="color: #333333">.</span><span style="color: #0000CC">getNext</span><span style="color: #333333">());</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Remove o ultimo elemento da lista (se for vazia nao faz nada)</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">removeLast</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>isEmpty<span style="color: #333333">())</span> <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+      remove<span style="color: #333333">(</span>last<span style="color: #333333">.</span><span style="color: #0000CC">getPrev</span><span style="color: #333333">());</span>            
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Remove um no da lista</span>
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">remove</span><span style="color: #333333">(</span>DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> prev <span style="color: #333333">=</span> n<span style="color: #333333">.</span><span style="color: #0000CC">getPrev</span><span style="color: #333333">();</span>
+      DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> next <span style="color: #333333">=</span> n<span style="color: #333333">.</span><span style="color: #0000CC">getNext</span><span style="color: #333333">();</span>
+      prev<span style="color: #333333">.</span><span style="color: #0000CC">setNext</span><span style="color: #333333">(</span>next<span style="color: #333333">);</span>
+      next<span style="color: #333333">.</span><span style="color: #0000CC">setPrev</span><span style="color: #333333">(</span>prev<span style="color: #333333">);</span>
+      size<span style="color: #333333">--;</span>
+   <span style="color: #333333">}</span>
+         
+   <span style="color: #888888">// Converte a lista para uma String</span>
+   <span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">toString</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      String str <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;{&quot;</span><span style="color: #333333">;</span>      
+      DNode<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span> cur <span style="color: #333333">=</span> first<span style="color: #333333">.</span><span style="color: #0000CC">getNext</span><span style="color: #333333">();</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;</span>size<span style="color: #333333">;</span> i<span style="color: #333333">++)</span> <span style="color: #333333">{</span>
+         str <span style="color: #333333">+=</span> cur<span style="color: #333333">.</span><span style="color: #0000CC">getValue</span><span style="color: #333333">();</span>
+         cur <span style="color: #333333">=</span> cur<span style="color: #333333">.</span><span style="color: #0000CC">getNext</span><span style="color: #333333">();</span>
+         <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>cur <span style="color: #333333">!=</span> last<span style="color: #333333">)</span> str <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;,&quot;</span><span style="color: #333333">;</span>
+      <span style="color: #333333">}</span>      
+      str <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;}&quot;</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">return</span> str<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>    
+      
+      <hr>
+
+      <h3>Exemplo de utilizacao (TestDoublyLinkedList.java)</h3>     
+
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Exemplo de utilizacao da lista duplamente ligada</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TestDoublyLinkedList</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+
+      <span style="color: #888888">// Criacao de lista de inteiros</span>
+      DoublyLinkedList<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;</span> list <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> DoublyLinkedList<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;();</span>
+
+      <span style="color: #888888">// Escrevendo lista (no inicio esta vazia)</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>list<span style="color: #333333">);</span>
+
+      <span style="color: #888888">// Verificando se esta vazia</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;isEmpty? &quot;</span> <span style="color: #333333">+</span> list<span style="color: #333333">.</span><span style="color: #0000CC">isEmpty</span><span style="color: #333333">());</span>     
+      
+      <span style="color: #888888">// Adicionando numeros de 1 a 5 ao final da lista</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;=</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">;</span> i<span style="color: #333333">++)</span>
+         list<span style="color: #333333">.</span><span style="color: #0000CC">addLast</span><span style="color: #333333">(</span>i<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>list<span style="color: #333333">);</span>
+
+      <span style="color: #888888">// Adicionando numeros de 6 a 10 ao inicio da lista</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">6</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;=</span><span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span> i<span style="color: #333333">++)</span>
+         list<span style="color: #333333">.</span><span style="color: #0000CC">addFirst</span><span style="color: #333333">(</span>i<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>list<span style="color: #333333">);</span>
+
+      <span style="color: #888888">// Verificando o tamanho da lista</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;size = &quot;</span> <span style="color: #333333">+</span> list<span style="color: #333333">.</span><span style="color: #0000CC">size</span><span style="color: #333333">());</span>
+
+      <span style="color: #888888">// Retirando o primeiro elemento</span>
+      list<span style="color: #333333">.</span><span style="color: #0000CC">removeFirst</span><span style="color: #333333">();</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>list<span style="color: #333333">);</span>
+
+      <span style="color: #888888">// Retirando o ultimo elemento</span>
+      list<span style="color: #333333">.</span><span style="color: #0000CC">removeLast</span><span style="color: #333333">();</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>list<span style="color: #333333">);</span>
+
+      <span style="color: #888888">// Verificando se esta vazia</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;isEmpty? &quot;</span> <span style="color: #333333">+</span> list<span style="color: #333333">.</span><span style="color: #0000CC">isEmpty</span><span style="color: #333333">());</span>
+
+      <span style="color: #888888">// Escreve o primeiro e ultimo elementos</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;getFirst() = &quot;</span> <span style="color: #333333">+</span> list<span style="color: #333333">.</span><span style="color: #0000CC">getFirst</span><span style="color: #333333">());</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;getLast() = &quot;</span> <span style="color: #333333">+</span> list<span style="color: #333333">.</span><span style="color: #0000CC">getLast</span><span style="color: #333333">());</span>
+
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+      
+      <hr>
+<p class="footer">Baseado em material didático de Pedro Ribeiro (DCC/FCUP)</script></p>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title></title>
+	<link rel="StyleSheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+  
+  <h3>Voltar para a <a href="index.html">lista de codigo</a></h3>
+  <hr>
+  
+  <h1></h1>
+
+    <p>
+
+      <h3>(TestString.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Exemplo de utilizacao de Strings</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Arrays</span><span style="color: #333333">;</span> <span style="color: #888888">// Para poder usar o Arrays.toString</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TestString</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      
+      <span style="color: #888888">// Criacao de strings e escrita</span>
+      String c1 <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> String<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;CC&quot;</span><span style="color: #333333">);</span>
+      String c2 <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;1007&quot;</span><span style="color: #333333">;</span>
+      String c3 <span style="color: #333333">=</span> c1 <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">+</span> c2 <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot; rocks&quot;</span><span style="color: #333333">;</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>c3<span style="color: #333333">);</span>
+
+      <span style="color: #888888">// Leitura de caracteres individuais e tamanho</span>
+      String s <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;algoritmos&quot;</span><span style="color: #333333">;</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;s.charAt(6) = &quot;</span> <span style="color: #333333">+</span> s<span style="color: #333333">.</span><span style="color: #0000CC">charAt</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">6</span><span style="color: #333333">));</span> <span style="color: #888888">// &#39;t&#39;</span>
+      <span style="color: #008800; font-weight: bold">for</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i <span style="color: #333333">&lt;</span> s<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">();</span> i<span style="color: #333333">++)</span> 
+         System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span>s<span style="color: #333333">.</span><span style="color: #0000CC">charAt</span><span style="color: #333333">(</span>i<span style="color: #333333">));</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">();</span>
+
+      <span style="color: #888888">// Comparacao de Strings</span>
+      String s1 <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> String<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Hello&quot;</span><span style="color: #333333">);</span>
+      String s2 <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> String<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Hello&quot;</span><span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>s1<span style="color: #333333">.</span><span style="color: #0000CC">equals</span><span style="color: #333333">(</span>s2<span style="color: #333333">));</span> <span style="color: #888888">// true</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>s1 <span style="color: #333333">==</span> s2<span style="color: #333333">);</span>      <span style="color: #888888">// false </span>
+      
+      String s3<span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> String<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Good-bye&quot;</span><span style="color: #333333">);</span>
+      String s4<span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> String<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;HELLO&quot;</span><span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>s1<span style="color: #333333">.</span><span style="color: #0000CC">equals</span><span style="color: #333333">(</span>s3<span style="color: #333333">));</span>           <span style="color: #888888">// false</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>s1<span style="color: #333333">.</span><span style="color: #0000CC">equals</span><span style="color: #333333">(</span>s4<span style="color: #333333">));</span>           <span style="color: #888888">// false</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>s1<span style="color: #333333">.</span><span style="color: #0000CC">equalsIgnoreCase</span><span style="color: #333333">(</span>s4<span style="color: #333333">));</span> <span style="color: #888888">// true (e um outro metodo)</span>
+
+      String s5 <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;algoritmos&quot;</span><span style="color: #333333">;</span>
+      String s6 <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;estruturas&quot;</span><span style="color: #333333">;</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>s5<span style="color: #333333">.</span><span style="color: #0000CC">compareTo</span><span style="color: #333333">(</span>s6<span style="color: #333333">));</span> <span style="color: #888888">// &lt; 0</span>
+
+      <span style="color: #888888">// Substring</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>s5<span style="color: #333333">.</span><span style="color: #0000CC">substring</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">));</span>
+
+      <span style="color: #888888">// Conversao de e para array</span>
+      String s7 <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;algoritmos&quot;</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">[]</span> a7 <span style="color: #333333">=</span> s7<span style="color: #333333">.</span><span style="color: #0000CC">toCharArray</span><span style="color: #333333">();</span>
+      String s8 <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> String<span style="color: #333333">(</span>a7<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>Arrays<span style="color: #333333">.</span><span style="color: #0000CC">toString</span><span style="color: #333333">(</span>a7<span style="color: #333333">));</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>s8<span style="color: #333333">);</span>
+      
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+      
+      <hr>
+<p class="footer">Baseado em material didático de Pedro Ribeiro (DCC/FCUP)</script></p>
+</body>
+
+</html>

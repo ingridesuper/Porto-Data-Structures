@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Gerando Permutacoes</title>
+	<link rel="StyleSheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+  
+  <h3>Voltar para a <a href="index.html">lista de codigo</a></h3>
+  <hr>
+  
+  <h1>Gerando Permutacoes</h1>
+
+    <p>
+
+      <h3>(TestPerm.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Geracao de permutacoes</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TestPerm</span> <span style="color: #333333">{</span>
+    <span style="color: #888888">// Escrever todos as permutacoes do array v[]</span>
+    <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">permutations</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> v<span style="color: #333333">[])</span> <span style="color: #333333">{</span>
+    <span style="color: #333399; font-weight: bold">boolean</span> used<span style="color: #333333">[]</span> <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">boolean</span><span style="color: #333333">[</span>v<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">];</span> <span style="color: #888888">// $i$ esta na permutacao?</span>
+    <span style="color: #333399; font-weight: bold">int</span> perm<span style="color: #333333">[]</span> <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">[</span>v<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">];</span>         <span style="color: #888888">// permutacao actual</span>
+    goPerm<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> v<span style="color: #333333">,</span> used<span style="color: #333333">,</span> perm<span style="color: #333333">);</span> <span style="color: #888888">// chamar funcao recursiva</span>
+    <span style="color: #333333">}</span>
+    <span style="color: #888888">// Gera todos os subconjuntos a partir da posicao &#39;cur&#39;</span>
+    <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">goPerm</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> cur<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> v<span style="color: #333333">[],</span> <span style="color: #333399; font-weight: bold">boolean</span> used<span style="color: #333333">[],</span> <span style="color: #333399; font-weight: bold">int</span> perm<span style="color: #333333">[])</span> <span style="color: #333333">{</span>
+    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>cur <span style="color: #333333">==</span> v<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">)</span> <span style="color: #333333">{</span>  <span style="color: #888888">// Caso base: terminamos a permutacao</span>
+        <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;</span>v<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">;</span> i<span style="color: #333333">++)</span> <span style="color: #888888">// Escrever a permutacao</span>
+	System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">print</span><span style="color: #333333">(</span>v<span style="color: #333333">[</span>perm<span style="color: #333333">[</span>i<span style="color: #333333">]]</span> <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot; &quot;</span><span style="color: #333333">);</span>
+	    System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">();</span>
+	<span style="color: #333333">}</span> <span style="color: #008800; font-weight: bold">else</span> <span style="color: #333333">{</span> <span style="color: #888888">// Se nao terminamos, continuar a gerar</span>
+	    <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;</span>v<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">;</span> i<span style="color: #333333">++)</span> <span style="color: #888888">// Tentar todos os elementos</span>
+	    <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(!</span>used<span style="color: #333333">[</span>i<span style="color: #333333">])</span> <span style="color: #333333">{</span> 
+	        used<span style="color: #333333">[</span>i<span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span> perm<span style="color: #333333">[</span>cur<span style="color: #333333">]</span> <span style="color: #333333">=</span> i<span style="color: #333333">;</span>
+	        goPerm<span style="color: #333333">(</span>cur<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span> v<span style="color: #333333">,</span> used<span style="color: #333333">,</span> perm<span style="color: #333333">);</span>
+	        used<span style="color: #333333">[</span>i<span style="color: #333333">]</span> <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+	    <span style="color: #333333">}</span>
+	    <span style="color: #333333">}</span>
+    <span style="color: #333333">}</span>   
+
+   <span style="color: #888888">// -----------------------------------------------------------</span>
+   
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+       <span style="color: #333399; font-weight: bold">int</span> v<span style="color: #333333">[]</span> <span style="color: #333333">=</span> <span style="color: #333333">{</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">6</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">};</span> <span style="color: #888888">// Inicializacao de array</span>
+
+      permutations<span style="color: #333333">(</span>v<span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+
+
+      <hr>
+<p class="footer">Baseado em material didático de Pedro Ribeiro (DCC/FCUP)</script></p>
+</body>
+
+</html>

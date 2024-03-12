@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>[ED004] - Jogo do Galo</title>
+	<link rel="StyleSheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+  
+  <h3>Voltar para a <a href="index.html">lista de codigo</a></h3>
+  <hr>
+  
+  <h1></h1>
+
+    <p>
+
+      <h3>(ED004.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/* -----------------------------------</span>
+<span style="color: #888888">   Estruturas de Dados 2023/2024</span>
+<span style="color: #888888">   Jogo do Galo [ED004]</span>
+<span style="color: #888888">   (Pedro Ribeiro @ DCC/FCUP)</span>
+<span style="color: #888888">   ----------------------------------- */</span>
+
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Scanner</span><span style="color: #333333">;</span>
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Game</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">int</span> n<span style="color: #333333">;</span>       <span style="color: #888888">// tamanho do tabuleiro</span>
+   <span style="color: #008800; font-weight: bold">private</span> <span style="color: #333399; font-weight: bold">char</span> m<span style="color: #333333">[][];</span>  <span style="color: #888888">// matriz que representa o tabuleiro</span>
+
+   <span style="color: #888888">// Construtor que recebe como argumento o tamanho n</span>
+   Game<span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> n<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">this</span><span style="color: #333333">.</span><span style="color: #0000CC">n</span> <span style="color: #333333">=</span> n<span style="color: #333333">;</span>
+      m <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">[</span>n<span style="color: #333333">][</span>n<span style="color: #333333">];</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Leitura de input para o tabuleiro</span>
+   <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">read</span><span style="color: #333333">(</span>Scanner in<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;</span>n<span style="color: #333333">;</span> i<span style="color: #333333">++)</span> <span style="color: #333333">{</span>
+         String buf <span style="color: #333333">=</span> in<span style="color: #333333">.</span><span style="color: #0000CC">next</span><span style="color: #333333">();</span>
+         <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> j<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> j<span style="color: #333333">&lt;</span>n<span style="color: #333333">;</span> j<span style="color: #333333">++)</span>
+            m<span style="color: #333333">[</span>i<span style="color: #333333">][</span>j<span style="color: #333333">]</span> <span style="color: #333333">=</span> buf<span style="color: #333333">.</span><span style="color: #0000CC">charAt</span><span style="color: #333333">(</span>j<span style="color: #333333">);</span>
+	 <span style="color: #333333">}</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Escreve mensagem dizendo que jogador player ganhou</span>
+   <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">win</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">char</span> player<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Ganhou o &quot;</span> <span style="color: #333333">+</span> player<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">exit</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">);</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Verifica se a linha que comeca em (x,y) e com incrementos</span>
+   <span style="color: #888888">// incx e incy tem todas as posicoes preenchidas com o mesmo caracter</span>
+   <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">verify</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> y<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> x<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> incy<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> incx<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>m<span style="color: #333333">[</span>y<span style="color: #333333">][</span>x<span style="color: #333333">]</span> <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;.&#39;</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> yy<span style="color: #333333">=</span>y<span style="color: #333333">,</span> xx<span style="color: #333333">=</span>x<span style="color: #333333">;</span> i<span style="color: #333333">&lt;</span>n<span style="color: #333333">;</span> i<span style="color: #333333">++,</span> yy<span style="color: #333333">+=</span>incy<span style="color: #333333">,</span> xx<span style="color: #333333">+=</span>incx<span style="color: #333333">)</span>
+         <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>m<span style="color: #333333">[</span>y<span style="color: #333333">][</span>x<span style="color: #333333">]</span> <span style="color: #333333">!=</span> m<span style="color: #333333">[</span>yy<span style="color: #333333">][</span>xx<span style="color: #333333">])</span> <span style="color: #008800; font-weight: bold">return</span><span style="color: #333333">;</span>
+      win<span style="color: #333333">(</span>m<span style="color: #333333">[</span>y<span style="color: #333333">][</span>x<span style="color: #333333">]);</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Devolve true se o tabuleiro estiver cheio ou false caso contrario</span>
+   <span style="color: #333399; font-weight: bold">boolean</span> <span style="color: #0066BB; font-weight: bold">finished</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;</span>n<span style="color: #333333">;</span> i<span style="color: #333333">++)</span>
+         <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> j<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> j<span style="color: #333333">&lt;</span>n<span style="color: #333333">;</span> j<span style="color: #333333">++)</span>
+            <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>m<span style="color: #333333">[</span>i<span style="color: #333333">][</span>j<span style="color: #333333">]</span> <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;.&#39;</span><span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">false</span><span style="color: #333333">;</span>
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// Verifica o estado do jogo</span>
+   <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">check</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;</span>n<span style="color: #333333">;</span> i<span style="color: #333333">++)</span> verify<span style="color: #333333">(</span>i<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">);</span> <span style="color: #888888">// Linhas</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> j<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">;</span> j<span style="color: #333333">&lt;</span>n<span style="color: #333333">;</span> j<span style="color: #333333">++)</span> verify<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> j<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">);</span> <span style="color: #888888">// Colunas</span>
+      verify<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">);</span>                         <span style="color: #888888">// Diagonal 1</span>
+      verify<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">);</span>                      <span style="color: #888888">// Diagonal 2</span>
+      
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(!</span>finished<span style="color: #333333">())</span> System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Jogo incompleto&quot;</span><span style="color: #333333">);</span>
+      <span style="color: #008800; font-weight: bold">else</span>             System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Empate&quot;</span><span style="color: #333333">);</span>
+      
+   <span style="color: #333333">}</span>    
+<span style="color: #333333">}</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ED004</span> <span style="color: #333333">{</span>    
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      Scanner in <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Scanner<span style="color: #333333">(</span>System<span style="color: #333333">.</span><span style="color: #0000CC">in</span><span style="color: #333333">);</span>
+      <span style="color: #333399; font-weight: bold">int</span> n <span style="color: #333333">=</span> in<span style="color: #333333">.</span><span style="color: #0000CC">nextInt</span><span style="color: #333333">();</span>
+      Game g <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Game<span style="color: #333333">(</span>n<span style="color: #333333">);</span>
+      g<span style="color: #333333">.</span><span style="color: #0000CC">read</span><span style="color: #333333">(</span>in<span style="color: #333333">);</span>
+      g<span style="color: #333333">.</span><span style="color: #0000CC">check</span><span style="color: #333333">();</span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+
+      
+      
+      <hr>
+<p class="footer">Baseado em material didático de Pedro Ribeiro (DCC/FCUP)</script></p>
+</body>
+
+</html>

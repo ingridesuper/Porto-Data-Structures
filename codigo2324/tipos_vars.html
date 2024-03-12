@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title></title>
+	<link rel="StyleSheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+  
+  <h3>Voltar para a <a href="index.html">lista de codigo</a></h3>
+  <hr>
+  
+  <h1>Tipos e Variaveis</h1>
+
+    <p>
+
+      <h3>(TestBasicTypes.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Atribuicao de varios tipo de variaveis</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TestBasicTypes</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #333399; font-weight: bold">boolean</span> flag <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">true</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">char</span>      ch <span style="color: #333333">=</span> <span style="color: #0044DD">&#39;A&#39;</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">byte</span>       b <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">12</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">short</span>      s <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">24</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">int</span>        i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">257</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">long</span>       l <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">2147483648L</span><span style="color: #333333">;</span>  <span style="color: #888888">// sem a letra e interpretado como int</span>
+      <span style="color: #333399; font-weight: bold">float</span>      f <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">3.1415f</span><span style="color: #333333">;</span>      <span style="color: #888888">// sem a letra e interpretado como double  </span>
+      <span style="color: #333399; font-weight: bold">double</span>     d <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.1828</span><span style="color: #333333">;</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;flag = &quot;</span> <span style="color: #333333">+</span> flag<span style="color: #333333">);</span> 
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;ch = &quot;</span>   <span style="color: #333333">+</span> ch<span style="color: #333333">);</span> 
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;b = &quot;</span>    <span style="color: #333333">+</span> b<span style="color: #333333">);</span> 
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;s = &quot;</span>    <span style="color: #333333">+</span> s<span style="color: #333333">);</span> 
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;i = &quot;</span>    <span style="color: #333333">+</span> i<span style="color: #333333">);</span> 
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;l = &quot;</span>    <span style="color: #333333">+</span> l<span style="color: #333333">);</span> 
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;f = &quot;</span>    <span style="color: #333333">+</span> f<span style="color: #333333">);</span> 
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;d = &quot;</span>    <span style="color: #333333">+</span> d<span style="color: #333333">);</span> 
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+
+      <hr>
+
+      <h3>(TestConversion.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Conversao entre varios tipos de variaveis</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TestConversion</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #333399; font-weight: bold">double</span> d1 <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">3.2</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">double</span> d2 <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">3.999999</span><span style="color: #333333">;</span>
+      
+      <span style="color: #888888">// Casting explicito      </span>
+      <span style="color: #333399; font-weight: bold">int</span>    i1 <span style="color: #333333">=</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">)</span>d1<span style="color: #333333">;</span>    <span style="color: #888888">// i1 fica com o valor de 3</span>
+      <span style="color: #333399; font-weight: bold">int</span>    i2 <span style="color: #333333">=</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">)</span>d2<span style="color: #333333">;</span>    <span style="color: #888888">// i2 fica com o valor de 3</span>
+      <span style="color: #333399; font-weight: bold">double</span> d3 <span style="color: #333333">=</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">double</span><span style="color: #333333">)</span>i2<span style="color: #333333">;</span> <span style="color: #888888">// d3 fica com o valor de 3.0</span>
+      
+      <span style="color: #888888">// Casting implicito</span>
+      <span style="color: #333399; font-weight: bold">int</span>    i3 <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">42</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">double</span> d4 <span style="color: #333333">=</span> i3<span style="color: #333333">;</span>         <span style="color: #888888">// d4 fica com o valor de 42.0</span>
+      <span style="color: #888888">//     int    i4 = d4;         // erro de compilacao: &quot;possible loss of precision</span>
+
+      <span style="color: #333399; font-weight: bold">char</span>  ch1 <span style="color: #333333">=</span> <span style="color: #0044DD">&#39;A&#39;</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">int</span>    i5 <span style="color: #333333">=</span> ch1<span style="color: #333333">;</span>        <span style="color: #888888">// i5 fica com o valor de 65 (codigo ascii de &#39;A&#39;)</span>
+      <span style="color: #333399; font-weight: bold">char</span>  ch2 <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">66</span><span style="color: #333333">;</span>         <span style="color: #888888">// ch2 fica com o valor de &#39;B&#39; (codigo ASCII 66)</span>
+
+      <span style="color: #888888">//      boolean b1 = i1;        // erro de compilacao: &quot;incompatible types&quot;           </span>
+   <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+      
+      <hr>
+
+      <h3>(TestLimits.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Limites dos varios tipos de variaveis</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TestLimits</span> <span style="color: #333333">{</span>
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String args<span style="color: #333333">[])</span> <span style="color: #333333">{</span>
+      <span style="color: #888888">// inteiros</span>
+      <span style="color: #333399; font-weight: bold">byte</span> largestByte <span style="color: #333333">=</span> Byte<span style="color: #333333">.</span><span style="color: #0000CC">MAX_VALUE</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">short</span> largestShort <span style="color: #333333">=</span> Short<span style="color: #333333">.</span><span style="color: #0000CC">MAX_VALUE</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">int</span> largestInteger <span style="color: #333333">=</span> Integer<span style="color: #333333">.</span><span style="color: #0000CC">MAX_VALUE</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">long</span> largestLong <span style="color: #333333">=</span> Long<span style="color: #333333">.</span><span style="color: #0000CC">MAX_VALUE</span><span style="color: #333333">;</span>
+
+      <span style="color: #888888">// virgula flutuante</span>
+      <span style="color: #333399; font-weight: bold">float</span> largestFloat <span style="color: #333333">=</span> Float<span style="color: #333333">.</span><span style="color: #0000CC">MAX_VALUE</span><span style="color: #333333">;</span>
+      <span style="color: #333399; font-weight: bold">double</span> largestDouble <span style="color: #333333">=</span> Double<span style="color: #333333">.</span><span style="color: #0000CC">MAX_VALUE</span><span style="color: #333333">;</span>
+
+      <span style="color: #888888">// mostrar limites</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Largest byte value: &quot;</span> <span style="color: #333333">+</span> largestByte<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Largest short value: &quot;</span> <span style="color: #333333">+</span> largestShort<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Largest integer value: &quot;</span> <span style="color: #333333">+</span> largestInteger<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Largest long value: &quot;</span> <span style="color: #333333">+</span> largestLong<span style="color: #333333">);</span>
+
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Largest float value: &quot;</span> <span style="color: #333333">+</span> largestFloat<span style="color: #333333">);</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;Largest double value: &quot;</span> <span style="color: #333333">+</span> largestDouble<span style="color: #333333">);</span>
+    <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></div>
+      
+      <hr>
+<p class="footer">Baseado em material didático de Pedro Ribeiro (DCC/FCUP)</script></p>
+</body>
+
+</html>

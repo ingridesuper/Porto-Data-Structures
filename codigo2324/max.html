@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Maximo de um array</title>
+	<link rel="StyleSheet" href="style.css" type="text/css">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+  
+  <h3>Voltar para a <a href="index.html">lista de codigo</a></h3>
+  <hr>
+  
+  <h1>Maximo de um array</h1>
+
+    <p>
+
+      <h3>(TestMax.java)</h3>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// Estruturas de Dados 2023/2024 (CC1007) - DCC/FCUP</span>
+<span style="color: #888888">// https://www.dcc.fc.up.pt/~miguel-areias/teaching/2324/ed/</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+<span style="color: #888888">// 3 versoes para descobrir o maximo de um intervalo de um array:</span>
+<span style="color: #888888">// (uma iterativa e duas recursivas)</span>
+<span style="color: #888888">// (Pedro Ribeiro @ DCC-FCUP)</span>
+<span style="color: #888888">// -----------------------------------------------------------</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TestMax</span> <span style="color: #333333">{</span>
+   
+   <span style="color: #888888">// Os 3 metodos seguintes recebem array v[] e duas posicoes start e end</span>
+   <span style="color: #888888">// e devolvem o maior numero do array entre start e end (inclusive)</span>
+   
+   <span style="color: #888888">// --------------------------------------------------------</span>
+   
+   <span style="color: #888888">// Versao iterativa   </span>
+   <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">maxIt</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> v<span style="color: #333333">[],</span> <span style="color: #333399; font-weight: bold">int</span> start<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> end<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #333399; font-weight: bold">int</span> maxSoFar <span style="color: #333333">=</span> v<span style="color: #333333">[</span>start<span style="color: #333333">];</span>                <span style="color: #888888">// Maior ate agora</span>
+      <span style="color: #008800; font-weight: bold">for</span> <span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> i<span style="color: #333333">=</span>start<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">;</span> i<span style="color: #333333">&lt;=</span>end<span style="color: #333333">;</span> i<span style="color: #333333">++)</span>        <span style="color: #888888">// Percorrer intervalo</span>
+         maxSoFar <span style="color: #333333">=</span> Math<span style="color: #333333">.</span><span style="color: #0000CC">max</span><span style="color: #333333">(</span>maxSoFar<span style="color: #333333">,</span> v<span style="color: #333333">[</span>i<span style="color: #333333">]);</span> <span style="color: #888888">// Actualizar maximo</span>
+      <span style="color: #008800; font-weight: bold">return</span> maxSoFar<span style="color: #333333">;</span>
+   <span style="color: #333333">}</span>
+
+   <span style="color: #888888">// --------------------------------------------------------</span>
+   
+   <span style="color: #888888">// Versao recursiva 1: dividir em elemento inicial e resto da lista</span>
+   <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">maxRec1</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> v<span style="color: #333333">[],</span> <span style="color: #333399; font-weight: bold">int</span> start<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> end<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>start <span style="color: #333333">==</span> end<span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span> v<span style="color: #333333">[</span>start<span style="color: #333333">];</span>  <span style="color: #888888">// caso base (tamanho 1)</span>
+      <span style="color: #333399; font-weight: bold">int</span> max <span style="color: #333333">=</span> maxRec1<span style="color: #333333">(</span>v<span style="color: #333333">,</span> start<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span> end<span style="color: #333333">);</span> <span style="color: #888888">// chamada recursiva (resto da lista)</span>
+      <span style="color: #008800; font-weight: bold">return</span> Math<span style="color: #333333">.</span><span style="color: #0000CC">max</span><span style="color: #333333">(</span>v<span style="color: #333333">[</span>start<span style="color: #333333">],</span> max<span style="color: #333333">);</span>     <span style="color: #888888">// combinar resultado</span>
+   <span style="color: #333333">}</span>
+   
+   <span style="color: #888888">// --------------------------------------------------------</span>
+   
+   <span style="color: #888888">// Versao recursiva 2: dividir em metade esquerda e metade direita</span>
+   <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">maxRec2</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> v<span style="color: #333333">[],</span> <span style="color: #333399; font-weight: bold">int</span> start<span style="color: #333333">,</span> <span style="color: #333399; font-weight: bold">int</span> end<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #333333">(</span>start <span style="color: #333333">==</span> end<span style="color: #333333">)</span> <span style="color: #008800; font-weight: bold">return</span> v<span style="color: #333333">[</span>start<span style="color: #333333">];</span>    <span style="color: #888888">// caso base (tamanho 1)</span>
+      <span style="color: #333399; font-weight: bold">int</span> middle <span style="color: #333333">=</span> <span style="color: #333333">(</span>start <span style="color: #333333">+</span> end<span style="color: #333333">)</span> <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">;</span>       <span style="color: #888888">// ponto medio</span>
+      <span style="color: #333399; font-weight: bold">int</span> max1 <span style="color: #333333">=</span> maxRec2<span style="color: #333333">(</span>v<span style="color: #333333">,</span> start<span style="color: #333333">,</span> middle<span style="color: #333333">);</span> <span style="color: #888888">// recursao na metade esquerda</span>
+      <span style="color: #333399; font-weight: bold">int</span> max2 <span style="color: #333333">=</span> maxRec2<span style="color: #333333">(</span>v<span style="color: #333333">,</span> middle<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span> end<span style="color: #333333">);</span> <span style="color: #888888">// recursao na metade direita</span>
+      <span style="color: #008800; font-weight: bold">return</span> Math<span style="color: #333333">.</span><span style="color: #0000CC">max</span><span style="color: #333333">(</span>max1<span style="color: #333333">,</span> max2<span style="color: #333333">);</span>          <span style="color: #888888">// combinar resultado</span>
+   <span style="color: #333333">}</span>
+   
+   <span style="color: #888888">// --------------------------------------------------------</span>
+   
+   <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+      <span style="color: #333399; font-weight: bold">int</span> v<span style="color: #333333">[]</span> <span style="color: #333333">=</span> <span style="color: #333333">{</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">5</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">4</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">,</span><span style="color: #0000DD; font-weight: bold">6</span><span style="color: #333333">};</span> <span style="color: #888888">// Inicializacao de array</span>
+
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;maxIt: &quot;</span> <span style="color: #333333">+</span> maxIt<span style="color: #333333">(</span>v<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> v<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">));</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;maxRec1: &quot;</span> <span style="color: #333333">+</span> maxRec1<span style="color: #333333">(</span>v<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> v<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">));</span>
+      System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;maxRec2: &quot;</span> <span style="color: #333333">+</span> maxRec2<span style="color: #333333">(</span>v<span style="color: #333333">,</span> <span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">,</span> v<span style="color: #333333">.</span><span style="color: #0000CC">length</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">));</span>
+   <span style="color: #333333">}</span>
+
+<span style="color: #333333">}</span>
+</pre></div>
+
+      
+      <hr>
+<p class="footer">Baseado em material didático de Pedro Ribeiro (DCC/FCUP)</script></p>
+</body>
+
+</html>
