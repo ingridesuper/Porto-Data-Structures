@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Produse</h1>
+<table>
+  <tr>
+    <th>
+      <b>Id</b>
+    </th>
+    <th>
+      <b>Denumire</b>
+    </th>
+    <th>
+      <b>Unitate</b>
+    </th>
+    <th>
+      <b>Tara</b>
+    </th>
+    <th>
+        <b>Tip produs</b>
+      </th>
+  </tr>
+
+  {% for produs in produse %}
+  <tr>
+    <td>
+        {{ produs.id }}
+      </td>
+    <td>
+      {{ produs.denumire }}
+    </td>
+    <td>
+      {{ produs.unitate }}
+    </td>
+    <td>
+      {{ produs.tara }}
+    </td>
+    <td>
+        {{ produs.tip }}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

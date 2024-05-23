@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ produs.denumire }}</h1>
+<p>
+  <b>Id: </b>{{ produs.id }}
+</p>
+<p>
+  <b>Unitate: </b>{{ produs.unitate }}
+</p>
+<p>
+  <b>Tara import: </b>{{ produs.tara }} 
+</p>
+<p>
+    <b>Categorie: </b>{{ produs.tip }} 
+</p>
+{% endblock %}

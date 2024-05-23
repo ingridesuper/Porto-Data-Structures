@@ -1,121 +1,136 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>MoviewStream database</h1>
+<h1>LAUROM</h1>
 
 <h2>About</h2>
-<p>This web application illustrates the use of the MovieStream
-database. The application is built using 
+<p>Aceasta aplicatie a fost realizata cu
 <a href="https://docs.python.org/3/library/sqlite3.html">sqlite3</a>,
-<a href="https://flask.palletsprojects.com">Flask</a>, and
+<a href="https://flask.palletsprojects.com">Flask</a>, si
 <a href="https://jinja.palletsprojects.com">Jinja</a>.
 </p>
 
-<h2>Un overview al produselor noastre</h2>
+<h2>Un overview al produselor oferite</h2>
 <table>
-<tr>
-  <th>Tipul produsului</th>
-  <th>Numar de produse</th>
-</tr>
-<tr>
-  <td>Lactate</td>
-  <td>{{ stats.n_lactate }}</td>
-</tr>
-<tr>
-  <td>Patiserie</td>
-  <td>{{ stats.n_patiseri }}</td>
-</tr>
-<tr>
-  <td>Congelate</td>
-  <td>{{ stats.n_congelate }}</td>
-</tr>
-<tr>
-  <td>Sosuri</td>
-  <td>{{ stats.n_sosuri }}</td>
-</tr>
-<tr>
-  <td>Chimice</td>
-  <td>{{ stats.n_chimice }}</td>
-</tr>
-<tr>
-  <td>Produse de baza</td>
-  <td>{{ stats.n_basics }}</td>
-</tr>
-<tr>
-  <td>Compot</td>
-  <td>{{ stats.n_compot }}</td>
-</tr>
-<tr>
-    <td>Nuci si seminte</td>
-    <td>{{ stats.n_nuciseminte }}</td>
+  <tr>
+    <th>Tip de produs</th>
+    <th>Numar produse</th>
   </tr>
   <tr>
-    <td>Legume si fructe</td>
-    <td>{{ stats.n_fructelegume }}</td>
+    <td>Lactate</td>
+    <td>{{ stats.n_lactate }}</td>
+  </tr>
+  <tr>
+    <td>Patiserie</td>
+    <td>{{ stats.n_patiserie }}</td>
+  </tr>
+  <tr>
+    <td>Congelate</td>
+    <td>{{ stats.n_congelate }}</td>
+  </tr>
+  <tr>
+    <td>Sosuri</td>
+    <td>{{ stats.n_sosuri }}</td>
+  </tr>
+  <tr>
+    <td>Chimice</td>
+    <td>{{ stats.n_chimice }}</td>
+  </tr>
+  <tr>
+    <td>Basics</td>
+    <td>{{ stats.n_basics }}</td>
+  </tr>
+  <tr>
+    <td>Compot</td>
+    <td>{{ stats.n_compot }}</td>
+  </tr>
+  <tr>
+    <td>Nuci si seminte</td>
+    <td>{{ stats.n_nuciseminte }}</td>
+  </tr>
+  <tr>
+    <td>Legume, fructe</td>
+    <td>{{ stats.n_legumefructe }}</td>
   </tr>
   <tr>
     <td>Condimente</td>
-    <td>{{ stats.n_condimente }}</td>
+    <td>{{ stats.n_condimente }}</td>
   </tr>
   <tr>
     <td>Carne si peste</td>
-    <td>{{ stats.n_carnepeste }}</td>
+    <td>{{ stats.n_carnepeste }}</td>
   </tr>
   <tr>
     <td>Ulei si otet</td>
-    <td>{{ stats.n_uleiotet }}</td>
+    <td>{{ stats.n_uleiotet }}</td>
   </tr>
   <tr>
     <td>Paste</td>
-    <td>{{ stats.n_paste }}</td>
+    <td>{{ stats.n_paste }}</td>
   </tr>
   <tr>
     <td>Obiecte bucatarie</td>
-    <td>{{ stats.n_obiecte }}</td>
+    <td>{{ stats.n_obiecte }}</td>
   </tr>
   <tr>
     <td>Panificatie</td>
-    <td>{{ stats.n_panificatie }}</td>
+    <td>{{ stats.n_panificatie }}</td>
   </tr>
   <tr>
     <td>Concentrate</td>
-    <td>{{ stats.n_concentrate }}</td>
+    <td>{{ stats.n_concentrate }}</td>
   </tr>
   <tr>
     <td>Creme</td>
-    <td>{{ stats.n_creme}}</td>
+    <td>{{ stats.n_creme }}</td>
   </tr>
   <tr>
     <td>Dulceata si gem</td>
-    <td>{{ stats.n_dulceatagem }}</td>
+    <td>{{ stats.n_dulceatagem }}</td>
   </tr>
   <tr>
     <td>Miere</td>
-    <td>{{ stats.n_miere}}</td>
+    <td>{{ stats.n_miere }}</td>
   </tr>
   <tr>
     <td>Pasta</td>
-    <td>{{ stats.n_pasta }}</td>
+    <td>{{ stats.n_pasta }}</td>
   </tr>
   <tr>
     <td>Umplutura</td>
-    <td>{{ stats.n_umplutura }}</td>
+    <td>{{ stats.n_umplutura }}</td>
   </tr>
-</table>
+  </table>
+  
 
 
 <h2>Produse</h2>
+
 <p>
    <a href="/produse">Vedeti toate produsele</a>
 </p>
   
-<p>Cautati dupa nume:
-<form name="produsenumesearch" action="javascript:window.open('/produse/searchnume/'+document.forms['produsenumesearch'].elements['expr'].value,'_self')">
+<p>Cautati dupa denumire:
+<form name="produsesearchdenumire" action="javascript:window.open('/produse/searchbydenumire/'+document.forms['produsesearchdenumire'].elements['expr'].value,'_self')">
   <input name="expr" id="expr" value="Masline" required/>
   <input type="submit" value="search"/>
 </form>
 </p>
-<!-- 
-<h3>Actors</h3>
+
+<p>Cautati dupa tara import:
+  <form name="produsesearchtara" action="javascript:window.open('/produse/searchbycountry/'+document.forms['produsesearchtara'].elements['expr'].value,'_self')">
+    <input name="expr" id="expr" value="Spania" required/>
+    <input type="submit" value="search"/>
+  </form>
+  </p>
+
+  <p>Cautati dupa categorie:
+    <form name="produsesearchcategorie" action="javascript:window.open('/produse/searchbycategorie/'+document.forms['produsesearchcategorie'].elements['expr'].value,'_self')">
+      <input name="expr" id="expr" value="Lactate" required/>
+      <input type="submit" value="search"/>
+    </form>
+    </p>
+
+<!-- <h3>Actors</h3>
 <p>
    <a href="/actors">List all</a>
 </p>
@@ -146,5 +161,5 @@ database. The application is built using
 <h3>Staff</h3>
 <p>
    <a href="/staff">List all</a>
-</p>
-{% endblock %} -->
+</p> -->
+{% endblock %}
