@@ -93,10 +93,11 @@ def get_produs(id):
       ''', [id]).fetchone()
   if produs is None:
      abort(404, 'Produsul cu id {} nu exista.'.format(id))
-  return render_template('produs.html', 
+  return render_template('produse-id.html', 
            produs=produs)
 
-@APP.route('/produse/searchnume/<expr>/')
+
+@APP.route('/produse/searchbydenumire/<expr>/')
 def search_produs(expr):
   search = { 'expr': expr }
   expr = '%' + expr + '%'
@@ -108,14 +109,13 @@ def search_produs(expr):
             JOIN tipprodus t ON p.tip = t.id
             where denumire like ?
       ''', [expr]).fetchall()
-  return render_template('produse-search-nume.html',
+  return render_template('produse-search-denumire.html',
            search=search,produse=produse)
 
 
 @APP.route('/produse/searchbycountry/<expr>/')
 def search_produs_by_country(expr):
   search = { 'expr': expr }
-  expr = expr
   produse = db.execute(
       ''' 
       SELECT p.id as id, p.denumire as denumire, p.unitate as unitate, f.tara as tara, t.nume as tip
@@ -125,6 +125,21 @@ def search_produs_by_country(expr):
             where tara like ?
       ''', [expr]).fetchall()
   return render_template('produse-search-by-country.html',
+           search=search,produse=produse)
+
+@APP.route('/produse/searchbycategorie/<expr>/')
+def search_produs_by_categorie(expr):
+  search = { 'expr': expr }
+  expr = '%' + expr + '%'
+  produse = db.execute(
+      ''' 
+      SELECT p.id as id, p.denumire as denumire, p.unitate as unitate, f.tara as tara, t.nume as tip
+            FROM furnizori f
+            JOIN produse p ON f.id = p.furnizor
+            JOIN tipprodus t ON p.tip = t.id
+            where t.nume like ?
+      ''', [expr]).fetchall()
+  return render_template('produse-search-by-categorie.html',
            search=search,produse=produse)
 
 # # Actors
@@ -266,4 +281,3 @@ def search_produs_by_country(expr):
 
 #   return render_template('staff.html', 
 #            staff=staff, superv=superv, supervisees=supervisees)
-
