@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1<Search produse dupa nume></h1>
+<p><b>Nume cautat: </b>"{{ search.expr }}"</p>
+<p>
+<ul>
+  {% for p in produse %}
+  <li><a href="/produse/{{ p.id }}">{{ p.denumire }}</a></li>
+  {% endfor %}
+</ul>
+</p>
+{% endblock %}

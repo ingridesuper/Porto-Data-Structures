@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>MoviewStream database</h1>
+
+<h2>About</h2>
+<p>This web application illustrates the use of the MovieStream
+database. The application is built using 
+<a href="https://docs.python.org/3/library/sqlite3.html">sqlite3</a>,
+<a href="https://flask.palletsprojects.com">Flask</a>, and
+<a href="https://jinja.palletsprojects.com">Jinja</a>.
+</p>
+
+<h2>Un overview al produselor noastre</h2>
+<table>
+<tr>
+  <th>Tipul produsului</th>
+  <th>Numar de produse</th>
+</tr>
+<tr>
+  <td>Lactate</td>
+  <td>{{ stats.n_lactate }}</td>
+</tr>
+<tr>
+  <td>Patiserie</td>
+  <td>{{ stats.n_patiseri }}</td>
+</tr>
+<tr>
+  <td>Congelate</td>
+  <td>{{ stats.n_congelate }}</td>
+</tr>
+<tr>
+  <td>Sosuri</td>
+  <td>{{ stats.n_sosuri }}</td>
+</tr>
+<tr>
+  <td>Chimice</td>
+  <td>{{ stats.n_chimice }}</td>
+</tr>
+<tr>
+  <td>Produse de baza</td>
+  <td>{{ stats.n_basics }}</td>
+</tr>
+<tr>
+  <td>Compot</td>
+  <td>{{ stats.n_compot }}</td>
+</tr>
+<tr>
+    <td>Nuci si seminte</td>
+    <td>{{ stats.n_nuciseminte }}</td>
+  </tr>
+  <tr>
+    <td>Legume si fructe</td>
+    <td>{{ stats.n_fructelegume }}</td>
+  </tr>
+  <tr>
+    <td>Condimente</td>
+    <td>{{ stats.n_condimente }}</td>
+  </tr>
+  <tr>
+    <td>Carne si peste</td>
+    <td>{{ stats.n_carnepeste }}</td>
+  </tr>
+  <tr>
+    <td>Ulei si otet</td>
+    <td>{{ stats.n_uleiotet }}</td>
+  </tr>
+  <tr>
+    <td>Paste</td>
+    <td>{{ stats.n_paste }}</td>
+  </tr>
+  <tr>
+    <td>Obiecte bucatarie</td>
+    <td>{{ stats.n_obiecte }}</td>
+  </tr>
+  <tr>
+    <td>Panificatie</td>
+    <td>{{ stats.n_panificatie }}</td>
+  </tr>
+  <tr>
+    <td>Concentrate</td>
+    <td>{{ stats.n_concentrate }}</td>
+  </tr>
+  <tr>
+    <td>Creme</td>
+    <td>{{ stats.n_creme}}</td>
+  </tr>
+  <tr>
+    <td>Dulceata si gem</td>
+    <td>{{ stats.n_dulceatagem }}</td>
+  </tr>
+  <tr>
+    <td>Miere</td>
+    <td>{{ stats.n_miere}}</td>
+  </tr>
+  <tr>
+    <td>Pasta</td>
+    <td>{{ stats.n_pasta }}</td>
+  </tr>
+  <tr>
+    <td>Umplutura</td>
+    <td>{{ stats.n_umplutura }}</td>
+  </tr>
+</table>
+
+
+<h2>Produse</h2>
+<p>
+   <a href="/produse">Vedeti toate produsele</a>
+</p>
+  
+<p>Cautati dupa nume:
+<form name="produsenumesearch" action="javascript:window.open('/produse/searchnume/'+document.forms['produsenumesearch'].elements['expr'].value,'_self')">
+  <input name="expr" id="expr" value="Masline" required/>
+  <input type="submit" value="search"/>
+</form>
+</p>
+<!-- 
+<h3>Actors</h3>
+<p>
+   <a href="/actors">List all</a>
+</p>
+<p>Get actor info:
+<form name="aid" action="javascript:window.open('/actors/'+document.forms['aid'].elements['id'].value,'_self')">
+   Actor Id:<input value="123" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+  
+<p>Search by name (prone to <a href="https://en.wikipedia.org/wiki/SQL_injection">SQL injection</a>!)
+  <form name="asearch" action="javascript:window.open('/actors/search/'+document.forms['asearch'].elements['expr'].value,'_self')">
+    <input name="expr" id="expr" value="Tom" required/>
+    <input type="submit" value="search"/>
+  </form>
+</p>
+
+<h3>Genres</h3>
+<p>
+   <a href="/genres">List all</a>
+</p>
+
+<p>Get genre info:
+<form name="gid" action="javascript:window.open('/genres/'+document.forms['gid'].elements['id'].value,'_self')">
+   Genre Id:<input value="1" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+
+<h3>Staff</h3>
+<p>
+   <a href="/staff">List all</a>
+</p>
+{% endblock %} -->
